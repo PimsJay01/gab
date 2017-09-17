@@ -4,12 +4,17 @@ GAB website is developed on Laravel-5.5 with Docker containers
 
 ## Requirements
 
+- Git
 - Docker
 - Docker-compose
 
 ## Install project
 
-First, install project dependancies :
+Get project from Github repository :
+
+`git clone git@github.com:PimsJay01/gab.git`
+
+go into project folder and install project dependancies :
 
 `$ docker run --rm -v $(pwd):/app composer/composer install`
 
