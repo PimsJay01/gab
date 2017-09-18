@@ -9,7 +9,7 @@ services:
             - ./:/var/www
         environment:
             - "DB_PORT=3306"
-            - "DB_HOST=gab"
+            - "DB_HOST=db"
     web:
         build:
             context: ./

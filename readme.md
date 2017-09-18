@@ -18,6 +18,13 @@ go into project folder and install project dependancies :
 
 `$ docker run --rm -v $(pwd):/app composer/composer install`
 
+Change permission of following folders :
+
+```
+chmod -R o+w storage
+chmod -R o+w bootstrap/cache
+```
+
 Launch Docker containers :
 
 `$ docker-compose up &`
@@ -51,17 +58,23 @@ You can stop Docker containers by running following command :
 
 All you need to know to develop on this project
 
+### Composer
+
+To install new dependancies through Composer in Docker container :
+
+`$ ./composer.sh ...`
+
 ### Artisan
 
-You have to run artisan command inside the container :
+To run Artisan command in Docker container :
 
-`$ docker-compose exec app php artisan ...`
+`$ ./artisan.sh ...`
 
 Usual commands :
 
 ```
-$ docker-compose exec app php artisan migrate --seed
-$ docker-compose exec app php artisan make:controller MyCtrl
+$ ./artisan.sh migrate --seed
+$ ./artisan.sh make:controller MyCtrl
 ```
 
 ### About Laravel

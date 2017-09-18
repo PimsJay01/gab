@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git pull
+
 # Run composer container to install project dependancies
 docker run --rm -v $(pwd):/app composer/composer update
 
