@@ -65,4 +65,20 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Uploads
+    |--------------------------------------------------------------------------
+    |
+    | Backpack CRUD uploads directory
+    |
+    | Supported Drivers: "local", "ftp", "s3", "rackspace"
+    |
+    */
+
+    'uploads' => [
+        'driver' => 'local',
+        'root' => public_path('uploads'),
+    ],
+
 ];

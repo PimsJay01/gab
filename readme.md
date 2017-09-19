@@ -63,18 +63,44 @@ All you need to know to develop on this project
 To install new dependancies through Composer in Docker container :
 
 `$ ./composer.sh ...`
+`$ ./composer.sh dump-autoload`
 
-### Artisan
+### Run command inside container
 
-To run Artisan command in Docker container :
+To run command in Docker container :
 
-`$ ./artisan.sh ...`
+`$ ./connect.sh`
+
+#### Artisan
 
 Usual commands :
 
 ```
-$ ./artisan.sh migrate --seed
-$ ./artisan.sh make:controller MyCtrl
+$ php artisan migrate --seed
+$ php artisan make:controller MyCtrl
+```
+
+#### Create entity
+
+First create migration file
+
+```
+$ composer dump-autoload
+$ php artisan migrate
+$ php artisan backpack:crud [entity]
+```
+
+Then manually add this to admin.php file :
+
+**CRUD::resource('entity', 'EntityCrudController');**
+
+Note: if you want the item to appear in the top admin menu, it’s as easy as including it in the *views/vendor/backpack/base/inc/sidebar.php* file:
+
+```
+<!-- ================================================ -->
+<!-- ==== Recommended place for admin menu items ==== -->
+<!-- ================================================ -->
+<li><a href="{{ url('admin/tag') }}"><i class="fa fa-tag"></i> <span>Manage Tags</span></a></li>
 ```
 
 ### About Laravel
