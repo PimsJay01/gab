@@ -18,6 +18,20 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
     public $timestamps = true;
 
+    public function roles()
+    {
+        return $this
+            ->belongsToMany('App\Role')
+            ->withTimestamps();
+    }
+
+    public function hasRole($role) {
+        if ($this->roles()->where('slug', $role)->first()) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Set crypted password
      *

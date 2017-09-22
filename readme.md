@@ -14,41 +14,15 @@ Get project from Github repository :
 
 `git clone git@github.com:PimsJay01/gab.git`
 
-go into project folder and install project dependancies :
-
-`$ docker run --rm -v $(pwd):/app composer/composer install`
-
-Change permission of following folders :
-
-```
-chmod -R o+w storage
-chmod -R o+w bootstrap/cache
-```
-
 Launch Docker containers :
 
 `$ docker-compose up &`
 
-Generate your project keys :
+Once containers started, run initialization scirpt :
 
-```
-$ docker-compose exec app php artisan key:generate
-$ docker-compose exec app php artisan optimize
-```
+`$ ./init.sh`
 
 Go to [localhost:8080](http://localhost:8080) to visualize GAB website.
-
-You can stop Docker containers by running following command :
-
-`$ docker-compose down`
-
-## Run project
-
-To update & launch project by running following script :
-
-`$ ./update-project.sh`
-
-Once Docker containers launched, go to [localhost:8080](http://localhost:8080) to visualize GAB website.
 
 You can stop Docker containers by running following command :
 
@@ -58,18 +32,20 @@ You can stop Docker containers by running following command :
 
 All you need to know to develop on this project
 
-### Composer
+### Run Laravel commands
 
-To install new dependancies through Composer in Docker container :
-
-`$ ./composer.sh ...`
-`$ ./composer.sh dump-autoload`
-
-### Run command inside container
-
-To run command in Docker container :
+You have to connect inside the app container to run commands :
 
 `$ ./connect.sh`
+
+#### Composer
+
+Usual commands :
+
+```
+$ composer update
+$ Composer dump-autoload
+```
 
 #### Artisan
 
@@ -77,7 +53,7 @@ Usual commands :
 
 ```
 $ php artisan migrate --seed
-$ php artisan make:controller MyCtrl
+$ php artisan make:controller [Controller]
 ```
 
 #### Create entity
@@ -96,12 +72,7 @@ Then manually add this to admin.php file :
 
 Note: if you want the item to appear in the top admin menu, it’s as easy as including it in the *views/vendor/backpack/base/inc/sidebar.php* file:
 
-```
-<!-- ================================================ -->
-<!-- ==== Recommended place for admin menu items ==== -->
-<!-- ================================================ -->
-<li><a href="{{ url('admin/tag') }}"><i class="fa fa-tag"></i> <span>Manage Tags</span></a></li>
-```
+`<li><a href="{{ url('admin/tag') }}"><i class="fa fa-tag"></i> <span>Manage Tags</span></a></li>`
 
 ### About Laravel
 

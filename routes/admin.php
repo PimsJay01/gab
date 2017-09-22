@@ -9,4 +9,7 @@
 |
 */
 
-CRUD::resource('aboutus', 'AboutusCrudController');
+Route::middleware(['role:committee'])->group(function ()
+{
+    CRUD::resource('aboutus', 'AboutusCrudController');
+});
