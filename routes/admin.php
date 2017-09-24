@@ -11,5 +11,6 @@
 
 Route::middleware(['role:committee'])->group(function ()
 {
+    CRUD::resource('users', 'UserCrudController');
     CRUD::resource('aboutus', 'AboutusCrudController');
 });

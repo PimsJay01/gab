@@ -9,7 +9,7 @@ class CreateAboutusTable extends Migration {
 	{
 		Schema::create('aboutus', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('text');
+			$table->text('text');
 
 			$table->timestamps();
 			$table->softDeletes();
