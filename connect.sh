@@ -1,3 +1,5 @@
 #!/bin/bash
 
-docker-compose exec --user laravel app bash
+USER=${1:-laravel}
+
+docker-compose exec --user $USER app bash
