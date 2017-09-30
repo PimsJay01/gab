@@ -1,0 +1,19 @@
+html {
+	font-size: $fontSize;
+	background: $secondary url("./img/body.png") repeat;
+}
+
+body {
+    @extend html;
+	margin-top: $marginTop;
+}
+
+a{
+    color: $primary;
+	text-decoration: none;
+
+    &:hover{
+    	color: $hover;
+    	text-decoration: none;
+    }
+}

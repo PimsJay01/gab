@@ -32,6 +32,11 @@ You can stop Docker containers by running following command :
 
 All you need to know to develop on this project
 
+### Developing conventions ###
+
+[SASS Guidelines](https://sass-guidelin.es/fr/)
+[BEM Methodology](https://en.bem.info/methodology/quick-start/)
+
 ### Run Laravel commands
 
 You have to connect inside the app container to run commands :

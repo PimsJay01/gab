@@ -22,6 +22,7 @@ RUN curl -sS https://getcomposer.org/installer | \
 USER root
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN apt-get install --yes nodejs
+#RUN npm install -g npm #bug: Error: Cannot find module 'npmlog'
 
 # Run Composer
 USER laravel
@@ -30,15 +31,14 @@ COPY composer.lock ./
 COPY database/ ./database/
 RUN ls -la .
 RUN composer install --no-scripts --no-autoloader
-RUN composer dump-autoload --optimize \
-	&& composer run-scripts post-install-cmd
+#RUN composer dump-autoload --optimize \
+#	&& composer run-scripts post-install-cmd
 
 # Run NPM
 USER laravel
 COPY package.json ./
-#RUN npm install -g npm
 RUN npm install
 
 #USER laravel
 #COPY . ./
-CMD [ "npm", "run", "watch" ]
+#CMD [ "npm", "run", "watch" ]

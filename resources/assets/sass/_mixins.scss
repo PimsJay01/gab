@@ -1,0 +1,76 @@
+@mixin background-size($bg) {
+  -webkit-background-size: $bg;
+     -moz-background-size: $bg;
+      -ms-background-size: $bg;
+       -o-background-size: $bg;
+          background-size: $bg;
+}
+
+@mixin text-shadow($ts) {
+  -webkit-text-shadow: $ts;
+     -moz-text-shadow: $ts;
+      -ms-text-shadow: $ts;
+       -o-text-shadow: $ts;
+          text-shadow: $ts;
+}
+
+@mixin box-shadow($ts) {
+  -webkit-box-shadow: $ts;
+     -moz-box-shadow: $ts;
+      -ms-box-shadow: $ts;
+       -o-box-shadow: $ts;
+          box-shadow: $ts;
+}
+
+@mixin box-sizing($ts) {
+  -webkit-box-sizing: $ts;
+     -moz-box-sizing: $ts;
+      -ms-box-sizing: $ts;
+       -o-box-sizing: $ts;
+          box-sizing: $ts;
+}
+
+@mixin border-radius($br) {
+  -webkit-border-radius: $br;
+     -moz-border-radius: $br;
+      -ms-border-radius: $br;
+       -o-border-radius: $br;
+          border-radius: $br;
+}
+
+@mixin transition($t) {
+  -webkit-transition: $t;
+     -moz-transition: $t;
+      -ms-transition: $t;
+       -o-transition: $t;
+          transition: $t;
+}
+
+@mixin transform($t) {
+  -webkit-transform: $t;
+     -moz-transform: $t;
+      -ms-transform: $t;
+       -o-transform: $t;
+          transform: $t;
+}
+
+@mixin cursor($type) {
+    cursor: -webkit-$type;
+    cursor: -moz-$type;
+    cursor: -ms-$type;
+    cursor: -o-$type;
+    cursor: $type;
+}
+
+@mixin filter($f) {
+  -webkit-filter: grayscale($f);
+          filter: grayscale($f);
+          filter: gray;
+}
+
+@mixin text-overflow($to) {
+    display:        block;
+    display:        -webkit-box;
+    overflow:       hidden;
+    text-overflow:  $to;
+}
