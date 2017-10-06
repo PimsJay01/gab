@@ -7,7 +7,6 @@ class RolesTableSeeder extends Seeder {
 
 	public function run()
 	{
-
 		// Committee
 		Role::create(array(
 			'name' => 'Comité',

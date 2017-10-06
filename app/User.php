@@ -13,11 +13,12 @@ class User extends Authenticatable
     use Notifiable, CrudTrait, SoftDeletes;
 
     protected $table = 'users';
-
+    protected $primaryKey = 'id';
+    public $timestamps = true;
+    protected $guarded = ['id'];
     protected $fillable = [ 'name', 'email', 'password' ];
     protected $hidden = [ 'password', 'remember_token' ];
-    // protected $dates = ['deleted_at'];
-    public $timestamps = true;
+    // protected $dates = [];
 
     public function roles()
     {

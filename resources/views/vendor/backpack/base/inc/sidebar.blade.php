@@ -25,6 +25,17 @@
           <!-- <li><a href="{{ url('admin/users') }}"><i class="fa fa-info"></i> <span>Users</span></a></li> -->
           <li><a href="{{ url('admin/users') }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
           <li><a href="{{ url('admin/aboutus') }}"><i class="fa fa-info"></i> <span>About us</span></a></li>
+          <li><a href="{{ url('admin/addresses') }}"><i class="fa fa-address-card-o"></i> <span>Addresses</span></a></li>
+          <li><a href="{{ url('admin/courts') }}"><i class="fa fa-map-marker"></i> <span>Courts</span></a></li>
+          <li><a href="{{ url('admin/court_infos') }}"><i class="fa fa-map-marker"></i> <span>Courts info</span></a></li>
+          <li><a href="{{ url('admin/court_schedules') }}"><i class="fa fa-map-marker"></i> <span>Court schedules</span></a></li>
+          <li><a href="{{ url('admin/court_types') }}"><i class="fa fa-map-marker"></i> <span>Court types</span></a></li>
+          <li><a href="{{ url('admin/documents') }}"><i class="fa fa-file-text-o"></i> <span>Documents</span></a></li>
+          <li><a href="{{ url('admin/document_types') }}"><i class="fa fa-file-text-o"></i> <span>Document types</span></a></li>
+          <li><a href="{{ url('admin/links') }}"><i class="fa fa-link"></i> <span>Links</span></a></li>
+          <li><a href="{{ url('admin/link_types') }}"><i class="fa fa-link"></i> <span>Link types</span></a></li>
+          <li><a href="{{ url('admin/news') }}"><i class="fa fa-newspaper-o"></i> <span>News</span></a></li>
+          <li><a href="{{ url('admin/seasons') }}"><i class="fa fa-calendar"></i> <span>Seasons</span></a></li>
           @endif
           <!-- ======================================= -->
           <li class="header">{{ trans('backpack::base.user') }}</li>

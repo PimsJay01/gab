@@ -16,3 +16,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/routes', function (Request $request) {
+    return collect($request->segments())
+            ->map(function ($item, $key) {
+                return (object)[
+                    'title' => trans('navbar.' . $item),
+                    'route' => $item
+                ];
+            })
+            ->toArray();
+});
+Route::get('/aboutus', 'InformationsController@aboutus');

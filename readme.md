@@ -18,7 +18,7 @@ Launch Docker containers :
 
 `$ docker-compose up &`
 
-Once containers started, run initialization scirpt :
+Once containers started, run initialization script :
 
 `$ ./init.sh`
 
@@ -71,11 +71,15 @@ $ php artisan migrate
 $ php artisan backpack:crud [entity]
 ```
 
+Check Controller file (set route to plural):
+
+$this->crud->setRoute(config('backpack.base.route_prefix') . '/entiti**es**');
+
 Then manually add this to admin.php file :
 
 **CRUD::resource('entity', 'EntityCrudController');**
 
-Note: if you want the item to appear in the top admin menu, it’s as easy as including it in the *views/vendor/backpack/base/inc/sidebar.php* file:
+Note: if you want the item to appear in the top admin menu, it’s as easy as including it in the *resources/views/vendor/backpack/base/inc/sidebar.php* file:
 
 `<li><a href="{{ url('admin/tag') }}"><i class="fa fa-tag"></i> <span>Manage Tags</span></a></li>`
 

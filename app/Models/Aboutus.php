@@ -19,8 +19,8 @@ class Aboutus extends Model
     protected $table = 'aboutus';
     protected $primaryKey = 'id';
     public $timestamps = true;
-    // protected $guarded = ['id'];
-    protected $fillable = [ 'text' ];
+    protected $guarded = ['id'];
+    protected $fillable = ['text'];
     // protected $hidden = [];
     // protected $dates = [];
 

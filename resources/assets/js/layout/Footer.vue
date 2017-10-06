@@ -5,7 +5,9 @@
     		<div><p>
     			<a @click="route('accueil')">Accueil</a> |
     			<a @click="route('contact')">Contact</a> |
-    			<a @click="route('aboutus')">Qui sommes-nous?</a> |
+                <!-- <router-link :to="aboutus"><p>Qui sommes-nous?</p></router-link> | -->
+    			<!-- <a :to="aboutus">Qui sommes-nous?</a> | -->
+    			<a @click="route('qui-sommes-nous')">Qui sommes-nous?</a> |
     			<a href="https://www.facebook.com/groups/8157738787/">Facebook</a> |
     			<a href="https://www.twitter.com/gabasket">Twitter</a>
     		</p></div>

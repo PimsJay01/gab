@@ -19,7 +19,7 @@ class UserCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
         $this->crud->setModel('App\User');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/users');
+        $this->crud->setRoute(config('backpack.base.route_prefix', 'admin') . '/users');
         $this->crud->setEntityNameStrings('user', 'users');
 
         /*
@@ -31,13 +31,34 @@ class UserCrudController extends CrudController
         $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+        $this->crud->addField(
+            [       // SelectMultiple = n-n relationship (with pivot table)
+                'label' => "Roles",
+                'type' => 'select_multiple',
+                'name' => 'roles', // the method that defines the relationship in your Model
+                'entity' => 'roles', // the method that defines the relationship in your Model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                'model' => "App\Role", // foreign key model
+                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+            ]
+        );
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
+        $this->crud->addColumn(
+            [       // SelectMultiple = n-n relationship (with pivot table)
+                'label' => "Roles",
+                'type' => 'select_multiple',
+                'name' => 'roles', // the method that defines the relationship in your Model
+                'entity' => 'roles', // the method that defines the relationship in your Model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                'model' => "App\Role", // foreign key model
+                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+            ]
+        ); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
@@ -55,7 +76,7 @@ class UserCrudController extends CrudController
         // $this->crud->removeAllButtonsFromStack('line');
 
         // ------ CRUD ACCESS
-        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER

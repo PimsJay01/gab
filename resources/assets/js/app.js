@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-// require('./bootstrap')
+require('./bootstrap')
 
 import Vue from 'vue'
 
@@ -14,9 +14,9 @@ import App from ':/App.vue'
 import Router from './router'
 Vue.use(Router)
 
-// import VueAxios from 'vue-axios'
-// import axios from 'axios'
-// Vue.use(VueAxios, axios)
+// Vue.prototype.$last = function (item, list) {
+//   return item === list[list.length - 1]
+// }
 
 new Vue({
     el: '#app',

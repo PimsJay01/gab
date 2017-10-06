@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import VueLocalStorage from 'vue-localstorage';
 
 import Test from ':/pages/Test.vue';
+import AboutUs from ':/pages/AboutUs.vue';
 
 Vue.use(Router);
 Vue.use(VueLocalStorage);
@@ -10,14 +11,22 @@ Vue.use(VueLocalStorage);
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'Welcome',
+      path:  '/',
+      name:  'Home',
       component: Test,
     },
     {
-      path: '/test',
-      name: 'Test',
-      component: Test
+      path:  '/welcome',
+      alias: '/accueil',
+      redirect: {
+          name: 'Home'
+      }
+    },
+    {
+      path:  '/about-us',
+      alias: '/qui-sommes-nous',
+      name:  'About-us',
+      component: AboutUs
     },
     // {
     //   path: '/view/:id',

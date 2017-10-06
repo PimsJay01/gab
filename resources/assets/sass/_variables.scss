@@ -1,4 +1,4 @@
-$primary: rgb(0, 0, 7);
+$primary: rgb(0, 0, 96);
 $secondary: rgb(95, 119, 191);
 $lightly: rgb(240,240,240);
 $hover: rgb(255, 96, 0);
@@ -6,10 +6,12 @@ $hover: rgb(255, 96, 0);
 $shadow: rgba(68,68,68,0.8);
 
 $fontSize: 14px;
+$titleSize: 18px;
 $marginTop: 50px;
 
 $body: $secondary;
 $page: $lightly;
+$title: $primary;
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
