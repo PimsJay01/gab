@@ -32,13 +32,27 @@ class NewsCrudController extends CrudController
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
-        // $this->crud->addFields($array_of_arrays, 'update/create/both');
+        $this->crud->addFields([
+            'text',
+            [   // Enum
+                'name' => 'type',
+                'label' => 'Type',
+                'type' => 'enum'
+            ]
+        ], 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
-        $this->crud->addColumns(['text', 'type']); // add multiple columns, at the end of the stack
+        $this->crud->addColumns([
+            'text',
+            [   // Enum
+                'name' => 'type',
+                'label' => 'Type',
+                'type' => 'enum'
+            ]
+        ]); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)

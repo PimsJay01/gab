@@ -32,13 +32,57 @@ class LinkCrudController extends CrudController
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
-        // $this->crud->addFields($array_of_arrays, 'update/create/both');
+        $this->crud->addFields([
+            'title',
+            [ // 1-n relationship
+               'label' => "Type", // Table column heading
+               'type' => "select",
+               'name' => 'link_type_id', // the column that contains the ID of that connected entity;
+               'entity' => 'linkType', // the method that defines the relationship in your Model
+               'attribute' => "title", // foreign key attribute that is shown to user
+               'model' => "App\Models\LinkType" // foreign key model
+           ],
+           [ // image
+                'label' => "Image",
+                'name' => "img",
+                'type' => 'image',
+                'upload' => true,
+                'crop' => true, // set to true to allow cropping, false to disable
+                'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
+                'prefix' => 'uploads/images/liens/' // in case you only store the filename in the database, this text will be prepended to the database value
+            ],
+            [   // URL
+                'name' => 'url',
+                'label' => 'Link to page',
+                'type' => 'url'
+            ]
+        ], 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
-        // $this->crud->addColumns(); // add multiple columns, at the end of the stack
+        $this->crud->addColumns([
+            'title',
+            [ // 1-n relationship
+               'label' => "Type", // Table column heading
+               'type' => "select",
+               'name' => 'link_type_id', // the column that contains the ID of that connected entity;
+               'entity' => 'linkType', // the method that defines the relationship in your Model
+               'attribute' => "title", // foreign key attribute that is shown to user
+               'model' => "App\Models\LinkType" // foreign key model
+            ],
+            [ // image
+                 'label' => "Image",
+                 'name' => "img",
+                 'type' => 'image'
+            ],
+            [ // image
+                 'label' => "Link",
+                 'name' => "url",
+                 'type' => 'text'
+            ]
+        ]); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)

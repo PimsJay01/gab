@@ -24,6 +24,8 @@ class CourtSchedule extends Model
     // protected $hidden = [];
     // protected $dates = [];
 
+    protected $weekDays = array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat');
+
     /*
     |--------------------------------------------------------------------------
     | FUNCTIONS
@@ -52,6 +54,11 @@ class CourtSchedule extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
+
+    public function getFullScheduleAttribute($value)
+    {
+        return $this->weekDays[$this->day-1] . ' ' . $this->time;
+    }
 
     /*
     |--------------------------------------------------------------------------

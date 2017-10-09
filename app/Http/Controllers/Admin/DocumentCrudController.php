@@ -32,13 +32,50 @@ class DocumentCrudController extends CrudController
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
-        // $this->crud->addFields($array_of_arrays, 'update/create/both');
+        $this->crud->addFields([
+            'title',
+            [  // Select
+                'label' => "Type",
+                'type' => 'select',
+                'name' => 'document_type_id', // the db column for the foreign key
+                'entity' => 'documentType', // the method that defines the relationship in your Model
+                'attribute' => 'title', // foreign key attribute that is shown to user
+                'model' => "App\Models\DocumentType" // foreign key model
+            ],
+            // [   // CustomHTML
+            //     'name' => 'new_type',
+            //     'type' => 'custom_html',
+            //     'value' => '<button class="create-popup-button">New</button>'
+            // ],
+            [
+                'name' => 'icon',
+                'label' => 'Icon',
+                'type' => 'enum',
+            ],
+            [   // Browse
+                'name' => 'path',
+                'label' => 'Document',
+                'type' => 'browse'
+            ]
+        ], 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
-        $this->crud->addColumns(['document_type_id', 'title', 'icon', 'path']); // add multiple columns, at the end of the stack
+        $this->crud->addColumns([
+            'title',
+            [  // Select
+                'label' => "Type",
+                'type' => 'select',
+                'name' => 'document_type_id', // the db column for the foreign key
+                'entity' => 'documentType', // the method that defines the relationship in your Model
+                'attribute' => 'title', // foreign key attribute that is shown to user
+                'model' => "App\Models\DocumentType" // foreign key model
+            ],
+            'icon',
+            'path'
+        ]); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)

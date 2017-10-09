@@ -53,6 +53,12 @@ class Address extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function getFullAddressAttribute($value)
+    {
+        return $this->number . ', ' . $this->street . ' ' . $this->postcode .
+            ' ' . $this->city;
+    }
+
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

@@ -60,7 +60,23 @@ class CourtScheduleCrudController extends CrudController
 
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
-        // $this->crud->addColumns(); // add multiple columns, at the end of the stack
+        $this->crud->addColumns([
+            [
+                'name'        => 'day', // the name of the db column
+                'label'       => 'Day', // the input label
+                'type'        => 'radio',
+                'options'     => [ // the key will be stored in the db, the value will be shown as label;,
+                    0 => "Sunday",
+                    1 => "Monday",
+                    2 => "Tuesday",
+                    3 => "Wednesday",
+                    4 => "Thursday",
+                    5 => "Friday",
+                    6 => "Saturday"
+                ]
+            ],
+            'time'
+        ]); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)

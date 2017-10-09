@@ -32,23 +32,24 @@ class CourtCrudController extends CrudController
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
-        // $this->crud->addFields($array_of_arrays, 'update/create/both');
-        // $this->crud->removeField('name', 'update/create/both');
-        // $this->crud->removeFields($array_of_names, 'update/create/both');
-
-        // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
-        $this->crud->addColumn(
+        $this->crud->addFields([
             [  // Select
                'label' => "Name",
                'type' => 'select',
                'name' => 'court_info_id', // the db column for the foreign key
                'entity' => 'courtInfo', // the method that defines the relationship in your Model
-               'attribute' => 'name', // foreign key attribute that is shown to user
+               'attribute' => 'nameAndType', // foreign key attribute that is shown to user
                'model' => "App\Models\CourtInfo" // foreign key model
-           ]
-       );
-        $this->crud->addColumn(
+
+            ],
+            // [  // Select
+            //    'label' => "Address",
+            //    'type' => 'select',
+            //    'name' => 'court_info_id_2', // the db column for the foreign key
+            //    'entity' => 'courtInfo', // the method that defines the relationship in your Model
+            //    'attribute' => 'fullAddress', // foreign key attribute that is shown to user
+            //    'model' => "App\Models\CourtInfo" // foreign key model
+            // ],
             [  // Select
                'label' => "Season",
                'type' => 'select',
@@ -56,19 +57,81 @@ class CourtCrudController extends CrudController
                'entity' => 'Season', // the method that defines the relationship in your Model
                'attribute' => 'title', // foreign key attribute that is shown to user
                'model' => "App\Models\Season" // foreign key model
-            ]
-        );
-        $this->crud->addColumn(
+            ],
             [       // SelectMultiple = n-n relationship (with pivot table)
                 'label' => "Court Schedule",
                 'type' => 'select_multiple',
                 'name' => 'courtSchedule', // the method that defines the relationship in your Model
                 'entity' => 'courtSchedule', // the method that defines the relationship in your Model
-                'attribute' => 'time', // foreign key attribute that is shown to user
-                'model' => "App\Models\CourtSchedule", // foreign key model
-                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+                'attribute' => 'fullSchedule', // foreign key attribute that is shown to user
+                'model' => "App\Models\CourtSchedule" // foreign key model
+            ],
+            // [
+            //     'name'        => 'day', // the name of the db column
+            //     'label'       => 'Day', // the input label
+            //     'type'        => 'radio',
+            //     'options'     => [ // the key will be stored in the db, the value will be shown as label;
+            //                         1 => "Monday",
+            //                         2 => "Tuesday",
+            //                         3 => "Wednesday",
+            //                         4 => "Thursday",
+            //                         5 => "Friday"
+            //                     ],
+            //     // optional
+            //     //'inline'      => false, // show the radios all on the same line?
+            // ],
+            // [
+            //     'name'        => 'periods', // the name of the db column
+            //     'label'       => 'Periods', // the input label
+            //     'type'        => 'radio',
+            //     'options'     => [ // the key will be stored in the db, the value will be shown as label;
+            //                         1 => "19:00 (3 games)",
+            //                         2 => "19:10 (3 games)",
+            //                         3 => "20:00 (2 games)"
+            //                     ],
+            //     // optional
+            //     //'inline'      => false, // show the radios all on the same line?
+            // ]
+        ], 'update/create/both');
+        // $this->crud->removeField('name', 'update/create/both');
+        // $this->crud->removeFields($array_of_names, 'update/create/both');
+
+        // ------ CRUD COLUMNS
+        // $this->crud->addColumn(); // add a single column, at the end of the stack
+        $this->crud->addColumns([
+            [  // Select
+               'label' => "Name",
+               'type' => 'select',
+               'name' => 'court_info_id', // the db column for the foreign key
+               'entity' => 'courtInfo', // the method that defines the relationship in your Model
+               'attribute' => 'nameAndType', // foreign key attribute that is shown to user
+               'model' => "App\Models\CourtInfo" // foreign key model
+            ],
+            [  // Select
+               'label' => "Address",
+               'type' => 'select',
+               'name' => 'court_info_id_2', // the db column for the foreign key
+               'entity' => 'courtInfo', // the method that defines the relationship in your Model
+               'attribute' => 'fullAddress', // foreign key attribute that is shown to user
+               'model' => "App\Models\CourtInfo" // foreign key model
+            ],
+            [  // Select
+               'label' => "Season",
+               'type' => 'select',
+               'name' => 'season_id', // the db column for the foreign key
+               'entity' => 'Season', // the method that defines the relationship in your Model
+               'attribute' => 'title', // foreign key attribute that is shown to user
+               'model' => "App\Models\Season" // foreign key model
+            ],
+            [       // SelectMultiple = n-n relationship (with pivot table)
+                'label' => "Court Schedule",
+                'type' => 'select_multiple',
+                'name' => 'courtSchedule', // the method that defines the relationship in your Model
+                'entity' => 'courtSchedule', // the method that defines the relationship in your Model
+                'attribute' => 'fullSchedule', // foreign key attribute that is shown to user
+                'model' => "App\Models\CourtSchedule" // foreign key model
             ]
-        ); // add multiple columns, at the end of the stack
+        ]); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
@@ -127,6 +190,7 @@ class CourtCrudController extends CrudController
         // $this->crud->orderBy();
         // $this->crud->groupBy();
         // $this->crud->limit();
+        $this->crud->filters();
     }
 
     public function store(StoreRequest $request)

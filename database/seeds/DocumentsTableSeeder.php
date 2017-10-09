@@ -9,31 +9,31 @@ class DocumentsTableSeeder extends Seeder {
 	{
 		Document::create(array(
 				'title' => 'Nouvel arbitre',
-				'path' => 'Inscription_arbitre.pdf',
+				'path' => 'uploads/Documents/Inscription_arbitre.pdf',
 				'document_type_id' => 1
 			));
 
 		Document::create(array(
 				'title' => 'Nouvelle équipe',
-				'path' => 'Inscription_equipe.pdf',
+				'path' => 'uploads/Documents/Inscription_equipe.pdf',
 				'document_type_id' => 1
 			));
 
 		Document::create(array(
 				'title' => 'Directives de jeu',
-				'path' => 'Directives_de_jeu.pdf',
+				'path' => 'uploads/Documents/Directives_de_jeu.pdf',
 				'document_type_id' => 2
 			));
 
 		Document::create(array(
 				'title' => 'Status',
-				'path' => 'Status_GAB.pdf',
+				'path' => 'uploads/Documents/Status_GAB.pdf',
 				'document_type_id' => 2
 			));
 
 		Document::create(array(
 				'title' => 'Demande de licence',
-				'path' => 'Demande_de_licence.pdf',
+				'path' => 'uploads/Documents/Demande_de_licence.pdf',
 				'document_type_id' => 3
 			));
 	}

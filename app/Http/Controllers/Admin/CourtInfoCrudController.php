@@ -32,22 +32,55 @@ class CourtInfoCrudController extends CrudController
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
-        // $this->crud->addFields($array_of_arrays, 'update/create/both');
+        $this->crud->addFields([
+            'name',
+            [
+                'name' => 'slug',
+                'label' => 'Slug',
+                'attributes' => ['disabled' => 'disabled']
+            ],
+            [ // 1-n relationship
+               'label' => "Type", // Table column heading
+               'type' => "select",
+               'name' => 'court_type_id', // the column that contains the ID of that connected entity;
+               'entity' => 'courtType', // the method that defines the relationship in your Model
+               'attribute' => "title", // foreign key attribute that is shown to user
+               'model' => "App\Models\CourtType" // foreign key model
+            ],
+            [ // 1-n relationship
+               'label' => "Address", // Table column heading
+               'type' => "select",
+               'name' => 'address_id', // the column that contains the ID of that connected entity;
+               'entity' => 'address', // the method that defines the relationship in your Model
+               'attribute' => "fullAddress", // foreign key attribute that is shown to user
+               'model' => "App\Models\Address" // foreign key model
+            ]
+        ], 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
-        // $this->crud->addColumns([
-        //     [ // 1-n relationship
-        //        'label' => "Category", // Table column heading
-        //        'type' => "select",
-        //        'name' => 'id', // the column that contains the ID of that connected entity;
-        //        'entity' => 'courtType', // the method that defines the relationship in your Model
-        //        'attribute' => "title", // foreign key attribute that is shown to user
-        //        'model' => "App\Models\CourtType", // foreign key model
-        //     ]
-        // ]); // add multiple columns, at the end of the stack
+        $this->crud->addColumns([
+            'name',
+            'slug',
+            [ // 1-n relationship
+               'label' => "Type", // Table column heading
+               'type' => "select",
+               'name' => 'court_type_id', // the column that contains the ID of that connected entity;
+               'entity' => 'courtType', // the method that defines the relationship in your Model
+               'attribute' => "title", // foreign key attribute that is shown to user
+               'model' => "App\Models\CourtType" // foreign key model
+            ],
+            [ // 1-n relationship
+               'label' => "Address", // Table column heading
+               'type' => "select",
+               'name' => 'address_id', // the column that contains the ID of that connected entity;
+               'entity' => 'address', // the method that defines the relationship in your Model
+               'attribute' => "fullAddress", // foreign key attribute that is shown to user
+               'model' => "App\Models\Address" // foreign key model
+            ]
+        ]); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
         // $this->crud->setColumnDetails('column_name', ['attribute' => 'value']); // adjusts the properties of the passed in column (by name)
@@ -111,9 +144,11 @@ class CourtInfoCrudController extends CrudController
     public function store(StoreRequest $request)
     {
         // your additional operations before save here
+        // $request->merge(['slug' => 'Test']);
         $redirect_location = parent::storeCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
+        // $this->crud->entry->courtType()->save()
         return $redirect_location;
     }
 

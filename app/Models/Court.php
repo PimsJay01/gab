@@ -20,7 +20,7 @@ class Court extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     protected $guarded = ['id'];
-    protected $fillable = [];
+    // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
 

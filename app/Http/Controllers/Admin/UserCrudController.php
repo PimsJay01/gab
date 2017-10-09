@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\UserRequest as StoreRequest;
-use App\Http\Requests\UserRequest as UpdateRequest;
+use App\Http\Requests\UserStoreRequest as StoreRequest;
+use App\Http\Requests\UserUpdateRequest as UpdateRequest;
+use Backpack\CRUD\app\Http\Requests\CrudRequest;
 
 class UserCrudController extends CrudController
 {
@@ -55,8 +56,7 @@ class UserCrudController extends CrudController
                 'name' => 'roles', // the method that defines the relationship in your Model
                 'entity' => 'roles', // the method that defines the relationship in your Model
                 'attribute' => 'name', // foreign key attribute that is shown to user
-                'model' => "App\Role", // foreign key model
-                'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+                'model' => "App\Role" // foreign key model
             ]
         ); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
@@ -76,7 +76,7 @@ class UserCrudController extends CrudController
         // $this->crud->removeAllButtonsFromStack('line');
 
         // ------ CRUD ACCESS
-        $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
+        // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
         // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
@@ -132,6 +132,10 @@ class UserCrudController extends CrudController
     public function update(UpdateRequest $request)
     {
         // your additional operations before save here
+        if (!$request->filled('password')) {
+            $request->request->remove('password');
+        }
+
         $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry

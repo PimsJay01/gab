@@ -9,10 +9,10 @@ class CreateImagesTable extends Migration {
 	{
 		Schema::create('images', function(Blueprint $table) {
 			$table->increments('id');
-            $table->string('name');
+            $table->string('name', 50);
             $table->string('path');
 			$table->string('extension', 10);
-            
+
 			$table->timestamps();
 			$table->softDeletes();
 		});

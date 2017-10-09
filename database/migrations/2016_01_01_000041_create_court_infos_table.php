@@ -12,7 +12,7 @@ class CreateCourtInfosTable extends Migration {
 			$table->integer('court_type_id')->unsigned();
 			$table->integer('address_id')->unsigned();
 			$table->string('name', 50);
-			$table->string('slug', 50);
+			$table->string('slug')->unique()->default('');
 
             $table->foreign('court_type_id')
                   ->references('id')

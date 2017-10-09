@@ -20,7 +20,7 @@ class Link extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     protected $guarded = ['id'];
-    protected $fillable = ['title'];
+    protected $fillable = ['title' 'img', 'url'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -38,7 +38,7 @@ class Link extends Model
 
     public function linkType()
 	{
-		return $this->hasOne('App\Models\LinkType');
+		return $this->hasOne('App\Models\LinkType', 'id', 'link_type_id');
 	}
 
     /*
