@@ -9,10 +9,10 @@ class CreateLinksTable extends Migration {
 	{
 		Schema::create('links', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('link_type_id')->unsigned();
 			$table->string('title', 50);
-			$table->string('img');
+			$table->string('img'); // TODO Images entity
 			$table->string('url');
+			$table->integer('link_type_id')->unsigned();
 
             $table->foreign('link_type_id')
                   ->references('id')

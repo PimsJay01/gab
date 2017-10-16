@@ -42,15 +42,9 @@ class DocumentCrudController extends CrudController
                 'attribute' => 'title', // foreign key attribute that is shown to user
                 'model' => "App\Models\DocumentType" // foreign key model
             ],
-            // [   // CustomHTML
-            //     'name' => 'new_type',
-            //     'type' => 'custom_html',
-            //     'value' => '<button class="create-popup-button">New</button>'
-            // ],
-            [
-                'name' => 'icon',
-                'label' => 'Icon',
-                'type' => 'enum',
+            [   // New sub-entity
+                'name' => 'document_types', // the db table name
+                'type' => 'btn_manage'
             ],
             [   // Browse
                 'name' => 'path',
@@ -73,7 +67,6 @@ class DocumentCrudController extends CrudController
                 'attribute' => 'title', // foreign key attribute that is shown to user
                 'model' => "App\Models\DocumentType" // foreign key model
             ],
-            'icon',
             'path'
         ]); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack

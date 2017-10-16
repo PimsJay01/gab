@@ -28,7 +28,7 @@ class LinkCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
@@ -42,6 +42,10 @@ class LinkCrudController extends CrudController
                'attribute' => "title", // foreign key attribute that is shown to user
                'model' => "App\Models\LinkType" // foreign key model
            ],
+           [   // New sub-entity
+               'name' => 'link_types', // the db table name
+               'type' => 'btn_manage'
+           ],
            [ // image
                 'label' => "Image",
                 'name' => "img",
@@ -49,7 +53,7 @@ class LinkCrudController extends CrudController
                 'upload' => true,
                 'crop' => true, // set to true to allow cropping, false to disable
                 'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
-                'prefix' => 'uploads/images/liens/' // in case you only store the filename in the database, this text will be prepended to the database value
+                'prefix' => 'uploads/Images/Liens/' // in case you only store the filename in the database, this text will be prepended to the database value
             ],
             [   // URL
                 'name' => 'url',

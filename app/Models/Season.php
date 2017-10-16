@@ -2,23 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Backpack\CRUD\CrudTrait;
-
-class Season extends Model
+class Season extends BaseModel
 {
-    use CrudTrait;
-
-     /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
-
     protected $table = 'seasons';
-    protected $primaryKey = 'id';
-    public $timestamps = true;
-    protected $guarded = ['id'];
     protected $fillable = ['title', 'start_at', 'end_at'];
     // protected $hidden = [];
     // protected $dates = [];

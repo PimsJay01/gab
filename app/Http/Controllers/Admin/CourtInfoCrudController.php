@@ -28,17 +28,17 @@ class CourtInfoCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         $this->crud->addFields([
             'name',
-            [
-                'name' => 'slug',
-                'label' => 'Slug',
-                'attributes' => ['disabled' => 'disabled']
-            ],
+            // [
+            //     'label' => 'Slug',
+            //     'type' => 'hidden',
+            //     'name' => 'slug'
+            // ],
             [ // 1-n relationship
                'label' => "Type", // Table column heading
                'type' => "select",
@@ -63,7 +63,7 @@ class CourtInfoCrudController extends CrudController
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         $this->crud->addColumns([
             'name',
-            'slug',
+            // 'slug',
             [ // 1-n relationship
                'label' => "Type", // Table column heading
                'type' => "select",
@@ -144,7 +144,7 @@ class CourtInfoCrudController extends CrudController
     public function store(StoreRequest $request)
     {
         // your additional operations before save here
-        // $request->merge(['slug' => 'Test']);
+        // $request->merge(['slug' => 'test']);
         $redirect_location = parent::storeCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
@@ -155,6 +155,7 @@ class CourtInfoCrudController extends CrudController
     public function update(UpdateRequest $request)
     {
         // your additional operations before save here
+        // $request->merge(['slug' => 'test']);
         $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry

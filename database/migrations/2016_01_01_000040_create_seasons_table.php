@@ -14,6 +14,7 @@ class CreateSeasonsTable extends Migration {
 			$table->date('end_at');
 
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

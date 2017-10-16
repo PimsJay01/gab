@@ -27,7 +27,7 @@ class UserUpdateRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
         return [
             'name' => 'required|min:2|max:255',
             'email' => 'required|email|max:255|unique:users,id,' . $this->id,
-            'password' => 'nullable|min:5|max:255'
+            'password' => 'nullable|min:7|max:255'
         ];
     }
 

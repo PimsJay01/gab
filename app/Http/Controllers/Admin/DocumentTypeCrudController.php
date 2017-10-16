@@ -28,7 +28,7 @@ class DocumentTypeCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
         $this->crud->addField('title', 'update/create/both');

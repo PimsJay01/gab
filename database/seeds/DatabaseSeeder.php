@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 
         // Roles
 
+    	DB::table('role_user')->delete();
     	DB::table('roles')->delete();
 
     	$this->call('RolesTableSeeder');
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
 
         // Users
 
+    	DB::table('password_resets')->delete();
     	DB::table('users')->delete();
 
     	$this->call('UsersTableSeeder');
@@ -51,7 +53,9 @@ class DatabaseSeeder extends Seeder
 
         DB::table('court_schedules')->delete();
         DB::table('courts')->delete();
+        DB::table('court_infos')->delete();
         DB::table('court_types')->delete();
+		DB::table('addresses')->delete();
         DB::table('seasons')->delete();
 
 		$this->call('SeasonsTableSeeder');

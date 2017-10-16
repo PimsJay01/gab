@@ -2,23 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Backpack\CRUD\CrudTrait;
-
-class LinkType extends Model
+class LinkType extends BaseModel
 {
-    use CrudTrait;
-
-     /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
-
     protected $table = 'link_types';
-    protected $primaryKey = 'id';
-    public $timestamps = false;
-    protected $guarded = ['id'];
     protected $fillable = ['title'];
     // protected $hidden = [];
     // protected $dates = [];

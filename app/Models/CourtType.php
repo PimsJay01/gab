@@ -2,23 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Backpack\CRUD\CrudTrait;
-
-class CourtType extends Model
+class CourtType extends BaseModel
 {
-    use CrudTrait;
-
-     /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
-
     protected $table = 'court_types';
-    protected $primaryKey = 'id';
-    public $timestamps = false;
-    protected $guarded = ['id'];
     protected $fillable = ['title'];
     // protected $hidden = [];
     // protected $dates = [];

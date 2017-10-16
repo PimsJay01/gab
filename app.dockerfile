@@ -11,7 +11,7 @@ RUN apt-get install -y --silent libmcrypt-dev \
     mysql-client libmagickwand-dev --no-install-recommends \
     && pecl install imagick \
     && docker-php-ext-enable imagick \
-    && docker-php-ext-install mcrypt pdo_mysql
+    && docker-php-ext-install mcrypt pdo_mysql gd
 
 # Install Composer
 USER root

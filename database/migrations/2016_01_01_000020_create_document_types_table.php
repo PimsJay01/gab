@@ -10,6 +10,9 @@ class CreateDocumentTypesTable extends Migration {
 		Schema::create('document_types', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('title', 50);
+
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

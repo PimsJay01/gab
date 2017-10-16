@@ -25,7 +25,9 @@ class SeasonRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'title' => 'required|max:50',
+            'start_at' => 'required|date|before:end_at',
+            'end_at' => 'required|date|after:start_at'
         ];
     }
 

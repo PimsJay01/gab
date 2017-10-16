@@ -2,25 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Backpack\CRUD\CrudTrait;
-
-class CourtInfo extends Model
+class CourtInfo extends BaseModel
 {
-    use CrudTrait, SoftDeletes;
-
-     /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
-
     protected $table = 'court_infos';
-    protected $primaryKey = 'id';
-    public $timestamps = true;
-    protected $guarded = ['id', 'court_type_id'];
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'address_id', 'court_type_id'];
     protected $hidden = ['slug'];
     // protected $dates = [];
 
@@ -63,15 +48,16 @@ class CourtInfo extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function getCourtAttribute($value)
+    {
+        return $this->getNameAndTypeAttribute($value) . ' - ' .
+                $this->getFullAddressAttribute($value);
+    }
+
     public function getFullAddressAttribute($value)
     {
         return $this->address()->first()->getFullAddressAttribute($value);
     }
-
-    // public function getTypeAndNameAttribute($value)
-    // {
-    //     return $this->courtType()->first()->title . ' ' . $this->name;
-    // }
 
     public function getNameAndTypeAttribute($value)
     {
@@ -83,4 +69,10 @@ class CourtInfo extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = $this->generateSlugFromValue($value);
+    }
 }

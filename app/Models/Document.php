@@ -2,26 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Backpack\CRUD\CrudTrait;
-
-class Document extends Model
+class Document extends BaseModel
 {
-    use CrudTrait, SoftDeletes;
-
-     /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
-
     protected $table = 'documents';
-    protected $primaryKey = 'id';
-    public $timestamps = true;
-    protected $guarded = ['id'];
-    protected $fillable = ['title', 'icon', 'path'];
-    // protected $hidden = [];
+    protected $fillable = ['title', 'path', 'document_type_id'];
+    protected $hidden = ['slug', 'extension'];
     // protected $dates = [];
 
     /*
@@ -58,4 +43,16 @@ class Document extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = $this->generateSlugFromValue($value);
+    }
+
+    public function setPathAttribute($value)
+    {
+        $this->attributes['path'] = $value;
+        $this->attributes['extension'] = $this->extractExtensionFromPath($value);
+    }
 }

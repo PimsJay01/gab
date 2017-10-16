@@ -26,8 +26,9 @@ class LinkRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     {
         return [
             'title' => 'required|min:2|max:50',
-            'img' => 'required|file',
-            'url' => 'required|url'
+            // 'img' => 'required|image',
+            'url' => 'required|url',
+            'link_type_id' => 'required'
         ];
     }
 

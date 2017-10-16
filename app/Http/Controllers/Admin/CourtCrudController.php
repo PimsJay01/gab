@@ -28,19 +28,23 @@ class CourtCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
         $this->crud->addFields([
             [  // Select
-               'label' => "Name",
+               'label' => "Court",
                'type' => 'select',
                'name' => 'court_info_id', // the db column for the foreign key
                'entity' => 'courtInfo', // the method that defines the relationship in your Model
-               'attribute' => 'nameAndType', // foreign key attribute that is shown to user
+               'attribute' => 'court', // foreign key attribute that is shown to user
                'model' => "App\Models\CourtInfo" // foreign key model
 
+            ],
+            [ // Manage sub-entity
+                'name' => 'court_infos', // the db table name
+                'type' => 'btn_manage'
             ],
             // [  // Select
             //    'label' => "Address",
@@ -58,14 +62,14 @@ class CourtCrudController extends CrudController
                'attribute' => 'title', // foreign key attribute that is shown to user
                'model' => "App\Models\Season" // foreign key model
             ],
-            [       // SelectMultiple = n-n relationship (with pivot table)
-                'label' => "Court Schedule",
+            [ // SelectMultiple = n-n relationship (with pivot table)
+                'label' => "Schedules",
                 'type' => 'select_multiple',
                 'name' => 'courtSchedule', // the method that defines the relationship in your Model
                 'entity' => 'courtSchedule', // the method that defines the relationship in your Model
                 'attribute' => 'fullSchedule', // foreign key attribute that is shown to user
                 'model' => "App\Models\CourtSchedule" // foreign key model
-            ],
+            ]
             // [
             //     'name'        => 'day', // the name of the db column
             //     'label'       => 'Day', // the input label
@@ -124,7 +128,7 @@ class CourtCrudController extends CrudController
                'model' => "App\Models\Season" // foreign key model
             ],
             [       // SelectMultiple = n-n relationship (with pivot table)
-                'label' => "Court Schedule",
+                'label' => "Schedules",
                 'type' => 'select_multiple',
                 'name' => 'courtSchedule', // the method that defines the relationship in your Model
                 'entity' => 'courtSchedule', // the method that defines the relationship in your Model
@@ -190,7 +194,7 @@ class CourtCrudController extends CrudController
         // $this->crud->orderBy();
         // $this->crud->groupBy();
         // $this->crud->limit();
-        $this->crud->filters();
+        // $this->crud->filters();
     }
 
     public function store(StoreRequest $request)

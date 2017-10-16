@@ -25,9 +25,9 @@ class DocumentRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            // 'title' => 'required|min:5|max:255',
-            // 'icon' => 'required|min:5|max:255',
-            // 'path' => 'required|min:5|max:255'
+            'title' => 'required|min:5|max:50',
+            'path' => 'required', // FIX (doesn't work) |mimes:doc,docx,md,pdf,txt,xls,xlsx 
+            'document_type_id' => 'required'
         ];
     }
 

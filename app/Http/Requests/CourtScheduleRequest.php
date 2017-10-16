@@ -25,7 +25,9 @@ class CourtScheduleRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'day' => 'required|integer|min:0|max:6',
+            'time' => 'required|time|date',
+            'court_id' => 'required'
         ];
     }
 

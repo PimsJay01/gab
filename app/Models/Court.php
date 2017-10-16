@@ -2,25 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Backpack\CRUD\CrudTrait;
-
-class Court extends Model
+class Court extends BaseModel
 {
-    use CrudTrait, SoftDeletes;
-
-     /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
-
     protected $table = 'courts';
-    protected $primaryKey = 'id';
-    public $timestamps = true;
-    protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = ['court_info_id', 'season_id'];
     // protected $hidden = [];
     // protected $dates = [];
 

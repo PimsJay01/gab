@@ -28,7 +28,7 @@ class AboutusCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        // $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
         $this->crud->addField('text', 'update/create/both');

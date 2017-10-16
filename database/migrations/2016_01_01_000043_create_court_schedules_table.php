@@ -9,9 +9,9 @@ class CreateCourtSchedulesTable extends Migration {
 	{
 		Schema::create('court_schedules', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('court_id')->unsigned();
 			$table->tinyInteger('day')->unsigned();
 			$table->time('time');
+			$table->integer('court_id')->unsigned();
 
             $table->foreign('court_id')
                   ->references('id')

@@ -27,7 +27,7 @@ class UserStoreRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
         return [
             'name' => 'required|min:2|max:255',
             'email' => 'required|email|max:255|unique:users,id',
-            'password' => 'required|min:5|max:255'
+            'password' => 'required|min:7|max:255'
         ];
     }
 

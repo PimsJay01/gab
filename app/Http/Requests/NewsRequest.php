@@ -25,7 +25,8 @@ class NewsRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            'text' => 'required'
+            'text' => 'required',
+            'type' => 'required|in:agenda,calendrier,divers,people,reglement,sanctions'
         ];
     }
 

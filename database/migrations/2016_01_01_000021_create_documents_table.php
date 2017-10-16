@@ -9,10 +9,11 @@ class CreateDocumentsTable extends Migration {
 	{
 		Schema::create('documents', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('document_type_id')->unsigned();
 			$table->string('title', 50);
-			$table->enum('icon', ['text', 'pdf', 'word', 'excel'])->default('pdf');
+			$table->string('slug');
 			$table->string('path');
+			$table->string('extension', 10);
+			$table->integer('document_type_id')->unsigned();
 
             $table->foreign('document_type_id')
                   ->references('id')

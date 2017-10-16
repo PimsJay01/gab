@@ -25,7 +25,9 @@ class CourtInfoRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'name' => 'required|max:50',
+            'court_type_id' => 'required',
+            'address_id' => 'required'
         ];
     }
 

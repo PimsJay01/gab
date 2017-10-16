@@ -25,7 +25,11 @@ class AddressRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'street' => 'required|max:100',
+            'number' => 'required|max:10',
+            'city' => 'required|max:100',
+            'postcode' => 'required|max:10',
+            'area' => 'required|max:100'
         ];
     }
 

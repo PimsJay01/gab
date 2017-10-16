@@ -10,6 +10,9 @@ class CreateLinkTypesTable extends Migration {
 		Schema::create('link_types', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('title', 50);
+
+			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 
